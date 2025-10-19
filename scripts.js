@@ -6,6 +6,8 @@ function generateGrid(size) {
 
         let row = document.createElement("div");
         row.className = "row";
+        let rowHeight = (1 / size) * 100;
+        row.style.height = rowHeight + "%";
         grid.appendChild(row);
 
         for(j=1;j<=size;j++) {
@@ -14,13 +16,36 @@ function generateGrid(size) {
             tile.className = "tile";
             let tileID = "row" + i + "column" + j;
             tile.id = tileID;
+            let tileWidth = (1 / size) * 100;
+            tile.style.width = tileWidth + "%";
             row.appendChild(tile);
 
         }
     }
 }
 
-generateGrid(10);
+//initial grid size
+generateGrid(16);
+
+let gridButton = document.querySelector(".gridButton");
+let newGrid = document.querySelector(".grid");
+
+//generate new grid size
+
+
+gridButton.addEventListener("click", (event) => {
+
+    let userInput = prompt("Choose a new grid size (1-100): ") 
+    let size = parseInt(userInput);
+    if (size>100) {
+        size = 100;
+    }
+    if (size !="" && size>=1 && size<=100) {
+        newGrid.replaceChildren();
+        generateGrid(size);
+    }
+
+})
 
 //hover effect
 let grid = document.querySelector(".grid");
