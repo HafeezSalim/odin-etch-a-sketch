@@ -12,10 +12,21 @@ function generateGrid(size) {
 
             let tile = document.createElement("div");
             tile.className = "tile";
+            let tileID = "row" + i + "column" + j;
+            tile.id = tileID;
             row.appendChild(tile);
 
         }
     }
 }
 
-generateGrid(16);
+generateGrid(10);
+
+//hover effect
+let grid = document.querySelector(".grid");
+grid.addEventListener("mouseover", (event) => {
+    if (event.target.classList.contains("tile")) {
+        event.target.style.backgroundColor = "yellow";
+    }
+})
+
