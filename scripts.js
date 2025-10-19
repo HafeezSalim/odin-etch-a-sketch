@@ -51,7 +51,10 @@ gridButton.addEventListener("click", (event) => {
 let grid = document.querySelector(".grid");
 grid.addEventListener("mouseover", (event) => {
     if (event.target.classList.contains("tile")) {
-        event.target.style.backgroundColor = "yellow";
+        let redSetting = Math.floor(Math.random() * 256).toString();
+        let greenSetting = Math.floor(Math.random() * 256).toString();
+        let blueSetting = Math.floor(Math.random() * 256).toString();
+        event.target.style.backgroundColor = "rgb("+redSetting+","+greenSetting+","+blueSetting+")";
     }
 })
 
