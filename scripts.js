@@ -18,6 +18,7 @@ function generateGrid(size) {
             tile.id = tileID;
             let tileWidth = (1 / size) * 100;
             tile.style.width = tileWidth + "%";
+            tile.style.opacity = 0.1;
             row.appendChild(tile);
 
         }
@@ -50,11 +51,17 @@ gridButton.addEventListener("click", (event) => {
 //hover effect
 let grid = document.querySelector(".grid");
 grid.addEventListener("mouseover", (event) => {
-    if (event.target.classList.contains("tile")) {
+    if (event.target.classList.contains("tile") && event.target.style.backgroundColor === "") {
         let redSetting = Math.floor(Math.random() * 256).toString();
         let greenSetting = Math.floor(Math.random() * 256).toString();
         let blueSetting = Math.floor(Math.random() * 256).toString();
         event.target.style.backgroundColor = "rgb("+redSetting+","+greenSetting+","+blueSetting+")";
     }
+    //make the opacity darker
+    let opacityValue = parseFloat(event.target.style.opacity);
+    if (opacityValue < 1) {
+        opacityValue = opacityValue + 0.1;
+    }
+    event.target.style.opacity = opacityValue;
 })
 
